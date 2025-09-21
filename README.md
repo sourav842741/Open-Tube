@@ -11,7 +11,7 @@
 
 ### Home Page & Browse Videos
 <video width="600" controls>
-  <source src="https://drive.google.com/uc?export=download&id=1BuYJTM-S_CuUGu14kaybskj5HdPmTE0K" type="video/mp4">
+  <source src="https://res.cloudinary.com/dm9hpyepi/video/upload/v1758478198/Screen_Recording_2025-09-21_231202_1_1_1_iczgkd.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
