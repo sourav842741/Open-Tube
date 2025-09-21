@@ -1,10 +1,5 @@
 # 📺 Open Tube
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](#)  
-[![React](https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge&logo=react)](https://reactjs.org/)  
-[![Node.js](https://img.shields.io/badge/Backend-Node.js-green?style=for-the-badge&logo=node.js)](https://nodejs.org/)  
-[![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen?style=for-the-badge&logo=mongodb)](https://www.mongodb.com/)  
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](./LICENSE)
 
 > **Open Tube** — A fully functional YouTube clone built with React, Node.js, and MongoDB. Upload, watch, like, comment, and manage videos with a smooth, modern UI.  
 
