@@ -11,7 +11,7 @@
 
 ### Home Page & Browse Videos
 <video width="600" controls>
-  <source src="https://www.example.com/video1.mp4" type="video/mp4">
+  <source src="Screen Recording 2025-09-21 231202 (1) (1).mp4">
   Your browser does not support the video tag.
 </video>
 
