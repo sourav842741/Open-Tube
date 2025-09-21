@@ -11,7 +11,7 @@
 
 ### Home Page & Browse Videos
 <video width="600" controls>
-  <source src="Screen Recording 2025-09-21 231202 (1) (1).mp4">
+  <source src="https://github.com/sourav842741/Open-Tube/blob/99fccb9708f48f82b3349214041fdfc64fba9c83/Screen%20Recording%202025-09-21%20231202%20(1)%20(1).mp4">
   Your browser does not support the video tag.
 </video>
 
