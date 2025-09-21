@@ -10,7 +10,8 @@
 > Watch Open Tube in action directly below.
 
 ### Home Page & Browse Videos
-[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+[![Watch Demo](https://res.cloudinary.com/dm9hpyepi/image/upload/v1758478198/video_thumbnail.jpg)](https://res.cloudinary.com/dm9hpyepi/video/upload/v1758478198/Screen_Recording_2025-09-21_231202_1_1_1_iczgkd.mp4)
+
 
 
 ---
