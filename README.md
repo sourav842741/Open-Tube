@@ -10,7 +10,7 @@
 > Watch Open Tube in action directly below.
 
 ### Home Page & Browse Videos
-[![Watch Demo](https://res.cloudinary.com/dm9hpyepi/image/upload/v1758478198/video_thumbnail.jpg)](https://res.cloudinary.com/dm9hpyepi/video/upload/v1758478198/Screen_Recording_2025-09-21_231202_1_1_1_iczgkd.mp4)
+[![Watch Demo](https://github.com/sourav842741/Open-Tube/blob/711e4f77341c68ddcb42fe30b89521ff192810aa/Screenshot%202025-09-21%20235103.png)](https://res.cloudinary.com/dm9hpyepi/video/upload/v1758478198/Screen_Recording_2025-09-21_231202_1_1_1_iczgkd.mp4)
 
 
 
