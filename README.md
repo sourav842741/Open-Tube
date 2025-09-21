@@ -10,17 +10,8 @@
 > Watch Open Tube in action directly below.
 
 ### Home Page & Browse Videos
-<video width="600" controls>
-  <source src="https://res.cloudinary.com/dm9hpyepi/video/upload/v1758478198/Screen_Recording_2025-09-21_231202_1_1_1_iczgkd.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 
-
-### Video Playback & Comments
-<video width="600" controls>
-  <source src="https://www.example.com/video2.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
 
 ---
 
