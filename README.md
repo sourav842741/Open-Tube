@@ -11,9 +11,10 @@
 
 ### Home Page & Browse Videos
 <video width="600" controls>
-  <source src="https://drive.google.com/file/d/1BuYJTM-S_CuUGu14kaybskj5HdPmTE0K/view?usp=sharing">
+  <source src="https://drive.google.com/uc?export=download&id=1BuYJTM-S_CuUGu14kaybskj5HdPmTE0K" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
 
 ### Video Playback & Comments
 <video width="600" controls>
