@@ -25,7 +25,6 @@
 - 📂 Channel creation & management  
 - 📈 View counts & statistics  
 - ⚡ Responsive and modern UI  
-- 🌐 Offline detection & shimmer loading  
 
 ---
 
