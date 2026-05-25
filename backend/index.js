@@ -23,8 +23,8 @@ app.use(cookieParser())
 app.use(express.json())
 
 app.use(cors({
-   origin:"http://localhost:5173",
-   credentials:true
+   origin: "http://localhost:5173",
+   credentials: true
 }))
 
 // ================= HEALTH CHECK =================
@@ -32,7 +32,7 @@ app.get("/api/health", async (req, res) => {
 
     try {
 
-        // Check MongoDB connection
+        // MongoDB connection check
         if (mongoose.connection.readyState !== 1) {
             throw new Error("MongoDB not connected")
         }
@@ -71,12 +71,31 @@ app.use("/api/user", userRouter)
 
 app.use("/api/content", contentRouter)
 
-// ================= ROOT =================
+// ================= ROOT ROUTE =================
 app.get("/", (req, res) => {
     res.send("Hello from Server")
 })
 
-app.listen(port , ()=>{
-    console.log("Server Started")
-    connectDb()
-})
+// ================= START SERVER =================
+const startServer = async () => {
+
+    try {
+
+        // First connect DB
+        await connectDb()
+
+        // Then start server
+        app.listen(port, () => {
+            console.log(`✅ Server Started on Port ${port}`)
+        })
+
+    } catch (error) {
+
+        console.log("❌ Database connection failed:", error)
+
+    }
+
+}
+
+// Run server
+startServer()
