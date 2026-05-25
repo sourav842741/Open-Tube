@@ -23,8 +23,8 @@ app.use(cookieParser())
 app.use(express.json())
 
 app.use(cors({
-   origin: "http://localhost:5173",
-   credentials: true
+   origin:"http://localhost:5173",
+   credentials:true
 }))
 
 // ================= HEALTH CHECK =================
@@ -76,23 +76,7 @@ app.get("/", (req, res) => {
     res.send("Hello from Server")
 })
 
-// ================= START SERVER =================
-const startServer = async () => {
-
-    try {
-
-        await connectDb()
-
-        app.listen(port, () => {
-            console.log(`✅ Server Started on ${port}`)
-        })
-
-    } catch (error) {
-
-        console.log("❌ Database connection failed:", error)
-
-    }
-
-}
-
-startServer()
+app.listen(port , ()=>{
+    console.log("Server Started")
+    connectDb()
+})
