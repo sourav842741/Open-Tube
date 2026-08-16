@@ -101,18 +101,41 @@ npm start     # or yarn start
 npm run build   # or yarn build
 ```
 ## ⚙️ Environment Variables
+
 ### Backend
+Copy `backend/.env.example` to `backend/.env` and fill in your values.
+
 ```
-PORT=
-MONGOURL=
-JWT_SECRET=
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
-EMAIL=
-EMAIL_PASS=
+PORT=5000
+MONGODB_URL=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<dbname>
+CLOUDINARY_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+JWT_SECRET=your_jwt_secret
+USER_EMAIL=your_gmail_address
+USER_PASSWORD=your_gmail_app_password
+GEMINI_API_KEY=your_gemini_api_key
 ```
+
+| Variable | Description |
+|---|---|
+| `PORT` | Backend server port (default `5000`) |
+| `MONGODB_URL` | MongoDB connection string |
+| `CLOUDINARY_NAME` | Cloudinary cloud name |
+| `CLOUDINARY_API_KEY` | Cloudinary API key |
+| `CLOUDINARY_API_SECRET` | Cloudinary API secret |
+| `JWT_SECRET` | Secret key for JWT signing |
+| `USER_EMAIL` | Gmail address for sending OTP emails |
+| `USER_PASSWORD` | Gmail app password (enable 2FA → create app password) |
+| `GEMINI_API_KEY` | Google Gemini API key for AI features |
+
 ### Frontend
+Copy `frontend/.env.example` to `frontend/.env` and fill in your values.
+
 ```
-VITE_FIREBASE_APIKEY=
+VITE_FIREBASE_APIKEY=your_firebase_api_key
 ```
+
+| Variable | Description |
+|---|---|
+| `VITE_FIREBASE_APIKEY` | Firebase web app API key for Google Sign-In |
