@@ -49,8 +49,8 @@ const Profile = () => {
             navigate("/")
             showCustomAlert("SignIn with Google Successfully")
       } catch (error) {
-        console.log(error)
-        showCustomAlert("SignIn with Google Error")
+        console.error("Google Sign-In Error:", error);
+        showCustomAlert(error?.response?.data?.message || error?.message || "SignIn with Google Error");
       }
     }
 

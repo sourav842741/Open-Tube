@@ -22,9 +22,34 @@ app.use(cookieParser())
 
 app.use(express.json())
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:3000",
+  "https://open-tube-1.onrender.com",
+  "https://open-tube.onrender.com",
+];
+
+if (process.env.CLIENT_URL) {
+  allowedOrigins.push(process.env.CLIENT_URL);
+}
+
 app.use(cors({
-   origin: "http://localhost:5173",
-   credentials: true
+  origin: (origin, callback) => {
+    // allow requests with no origin (like mobile apps, curl, postman)
+    if (!origin) return callback(null, true);
+
+    const isAllowed =
+      allowedOrigins.includes(origin) ||
+      origin.endsWith(".onrender.com") ||
+      /^http:\/\/localhost:\d+$/.test(origin);
+
+    if (isAllowed) {
+      return callback(null, true);
+    }
+    return callback(new Error(`CORS error: ${origin} not allowed`));
+  },
+  credentials: true
 }))
 
 // ================= HEALTH CHECK =================
