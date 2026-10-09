@@ -41,7 +41,7 @@ const AllVideosPage = () => {
   }, [allVideoData]);
 
   return (
-    <div className="flex flex-wrap gap-6 mb-12">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-8 mb-10">
       {allVideoData?.map((video) => (
         <VideoCard
           key={video._id}

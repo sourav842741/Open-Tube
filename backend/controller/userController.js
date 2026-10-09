@@ -381,8 +381,11 @@ export const getHistory = async (req, res) => {
 
     if (!user) return res.status(404).json({ message: "User not found" });
 
+    // Filter out deleted content
+    const validHistory = (user.history || []).filter((item) => item.contentId != null);
+
     // ✅ Latest history upar
-    const sortedHistory = [...user.history].sort(
+    const sortedHistory = [...validHistory].sort(
       (a, b) => new Date(b.watchedAt) - new Date(a.watchedAt)
     );
 

@@ -46,18 +46,18 @@ const SearchResults = ({ searchResults }) => {
     (!searchResults?.playlists || searchResults.playlists.length === 0);
 
   return (
-    <div className="px-6 py-4 bg-[#00000051] border-1 border-gray-800 mb-[20px]">
-      <h1 className="text-2xl font-bold mb-4">Search Results :</h1>
+    <div className="mb-10">
+      <h1 className="text-xl font-bold text-white mb-6">Search Results</h1>
 
       {isEmpty ? (
-        <p className="text-gray-400 text-lg">No results found.</p>
+        <p className="text-gray-400 text-base py-8">No results found.</p>
       ) : (
         <>
           {/* Channels Section */}
           {searchResults.channels?.length > 0 && (
-            <div className="mb-12">
-              <h3 className="text-xl font-bold mb-4">Channels</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="mb-10">
+              <h3 className="text-lg font-bold text-white mb-4">Channels</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {searchResults.channels.map((ch) => (
                   <ChannelCard
                     key={ch._id}
@@ -72,9 +72,9 @@ const SearchResults = ({ searchResults }) => {
 
           {/* Videos Section */}
           {searchResults.videos?.length > 0 && (
-            <div>
-              <h3 className="text-xl font-bold mb-4">Videos</h3>
-              <div className="flex flex-wrap gap-6 mb-12">
+            <div className="mb-10">
+              <h3 className="text-lg font-bold text-white mb-4">Videos</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-8">
                 {searchResults.videos.map((video) => (
                   <VideoCard
                     key={video._id}
@@ -94,20 +94,19 @@ const SearchResults = ({ searchResults }) => {
 
           {/* Shorts Section */}
           {searchResults.shorts?.length > 0 && (
-            <div className="mt-8">
-              <h3 className="text-xl font-bold mb-4">Shorts</h3>
-              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+            <div className="mt-8 pt-6 border-t border-[#272727] mb-10">
+              <h3 className="text-lg font-bold text-white mb-4">Shorts</h3>
+              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none">
                 {searchResults.shorts.map((short) => (
-                  <div key={short._id} className="flex-shrink-0">
-                    <ShortsCard
-                      shortUrl={short.shortUrl}
-                      title={short.title}
-                      channelName={short.channel?.name}
-                      views={short.views}
-                      id={short._id}
-                      avatar={short.channel?.avatar}
-                    />
-                  </div>
+                  <ShortsCard
+                    key={short._id}
+                    shortUrl={short.shortUrl}
+                    title={short.title}
+                    channelName={short.channel?.name}
+                    views={short.views}
+                    id={short._id}
+                    avatar={short.channel?.avatar}
+                  />
                 ))}
               </div>
             </div>

@@ -1,10 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-*{
+* {
   font-family: "Roboto", sans-serif;
-   -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none; 
-  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

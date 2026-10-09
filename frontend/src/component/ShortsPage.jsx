@@ -8,26 +8,25 @@ const ShortsPage = () => {
   const latestShorts = allShortData?.slice(0, 10) || [];
 
   return (
-    <div className="px-6 py-4">
+    <div className="mt-8 pt-6 border-t border-[#272727]">
       {/* Heading */}
-      <h2 className="text-xl font-bold mb-4 flex items-center gap-1">
-        <SiYoutubeshorts className="w-6 h-6 text-red-600" />
-        Shorts
-      </h2>
+      <div className="flex items-center gap-2 mb-4">
+        <SiYoutubeshorts className="w-6 h-6 text-[#ff0000]" />
+        <h2 className="text-xl font-bold text-white tracking-tight">Shorts</h2>
+      </div>
 
       {/* Horizontal scroll with fixed width cards */}
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none">
         {latestShorts.map((short) => (
-          <div key={short._id} className="flex-shrink-0">
-            <ShortsCard
-              shortUrl={short.shortUrl}
-              title={short.title}
-              channelName={short.channel?.name}
-              views={short.views}
-              id={short?._id}
-              avatar={short.channel?.avatar}
-            />
-          </div>
+          <ShortsCard
+            key={short._id}
+            shortUrl={short.shortUrl}
+            title={short.title}
+            channelName={short.channel?.name}
+            views={short.views}
+            id={short?._id}
+            avatar={short.channel?.avatar}
+          />
         ))}
       </div>
     </div>

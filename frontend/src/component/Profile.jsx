@@ -59,58 +59,86 @@ const Profile = () => {
      
 
       {/* Dropdown Menu */}
-      
-        <div className="absolute right-5 top-10 mt-2 w-72 bg-[#212121] text-white rounded-xl shadow-lg z-50">
-          {/* Profile Info */}
-          {userData && <div className="flex items-center gap-3 p-4 border-b border-gray-700">
-              
-<img
-  src={userData?.photoUrl || img}
-  alt="Profile"
-  className="w-12 h-12 flex items-center justify-center rounded-full object-cover border-1 border-gray-700"
-/>
-            <div>
-              <h4 className="font-semibold">{userData?.username}</h4>
-              <p className="text-sm text-gray-400">{userData?.email}</p>
-              <p
-  className="text-sm text-blue-400 cursor-pointer hover:underline"
-  onClick={() => {
-    if (userData?.channel) {
-      // Go to channel page
-      navigate("/viewchannel")
-      // navigate(`/channel/${userData.channel._id}`);
-    } else {
-      // Go to create channel flow
-      navigate("/createchannel");
-    }
-  }}
->
-  {userData?.channel ? "View Channel" : "Create Channel"}
-</p>
+      <div className="fixed md:absolute right-4 top-14 w-80 bg-[#282828] text-[#f1f1f1] rounded-2xl shadow-2xl border border-[#3e3e3e] z-50 overflow-hidden py-2 animate-in fade-in duration-150">
+        {/* Profile Info */}
+        {userData && (
+          <div className="flex items-start gap-3.5 p-4 border-b border-[#3e3e3e]">
+            <img
+              src={userData?.photoUrl || img}
+              alt="Profile"
+              className="w-10 h-10 rounded-full object-cover border border-[#444] flex-shrink-0"
+            />
+            <div className="flex-1 min-w-0">
+              <h4 className="font-medium text-white text-[15px] truncate">
+                {userData?.username}
+              </h4>
+              <p className="text-xs text-[#aaaaaa] truncate mt-0.5">
+                {userData?.email}
+              </p>
+              <button
+                type="button"
+                className="text-xs text-[#3ea6ff] hover:underline font-medium mt-1.5 cursor-pointer block text-left"
+                onClick={() => {
+                  if (userData?.channel) {
+                    navigate("/viewchannel");
+                  } else {
+                    navigate("/createchannel");
+                  }
+                }}
+              >
+                {userData?.channel ? "View channel" : "Create a channel"}
+              </button>
             </div>
-          </div>}
-
-          {/* Options */}
-          <div className="flex flex-col py-2">
-            <button className="flex items-center gap-3 px-4 py-2 hover:bg-gray-700" onClick={googleSignIn}>
-              <FcGoogle className="text-xl" />SignIn with Google Account
-            </button>
-            <button className="flex items-center gap-3 px-4 py-2 hover:bg-gray-700" onClick={()=>navigate("/signup")}>
-              <TiUserAddOutline className="text-xl" />
-              Create new account
-            </button>
-            <button className="flex items-center gap-3 px-4 py-2 hover:bg-gray-700" onClick={()=>navigate("/signin")}>
-              <MdOutlineSwitchAccount className="text-xl" /> SignIn with other account
-            </button>
-            {userData?.channel && <button className="flex items-center gap-3 px-4 py-2 hover:bg-gray-700" onClick={()=>navigate("/ptstudio/dashboard")}>
-              <SiYoutubestudio className="w-5 h-5 text-orange-400" /> PT Studio
-            </button>}
-            
-            {userData && <button className="flex items-center gap-3 px-4 py-2 hover:bg-gray-700" onClick={handleSignOut}>
-              <FiLogOut className="text-xl" /> Sign out
-            </button>}
           </div>
+        )}
+
+        {/* Options */}
+        <div className="flex flex-col py-1.5">
+          <button
+            className="flex items-center gap-3.5 px-4 py-2.5 hover:bg-[#383838] transition-colors text-sm font-normal text-[#f1f1f1] cursor-pointer text-left w-full"
+            onClick={googleSignIn}
+          >
+            <FcGoogle className="text-xl flex-shrink-0" />
+            <span>Sign in with Google</span>
+          </button>
+
+          <button
+            className="flex items-center gap-3.5 px-4 py-2.5 hover:bg-[#383838] transition-colors text-sm font-normal text-[#f1f1f1] cursor-pointer text-left w-full"
+            onClick={() => navigate("/signup")}
+          >
+            <TiUserAddOutline className="text-xl flex-shrink-0 text-gray-300" />
+            <span>Create new account</span>
+          </button>
+
+          <button
+            className="flex items-center gap-3.5 px-4 py-2.5 hover:bg-[#383838] transition-colors text-sm font-normal text-[#f1f1f1] cursor-pointer text-left w-full"
+            onClick={() => navigate("/signin")}
+          >
+            <MdOutlineSwitchAccount className="text-xl flex-shrink-0 text-gray-300" />
+            <span>Sign in with email/password</span>
+          </button>
+
+          {userData?.channel && (
+            <button
+              className="flex items-center gap-3.5 px-4 py-2.5 hover:bg-[#383838] transition-colors text-sm font-normal text-[#f1f1f1] cursor-pointer text-left w-full border-t border-[#3e3e3e] mt-1 pt-2.5"
+              onClick={() => navigate("/ptstudio/dashboard")}
+            >
+              <SiYoutubestudio className="text-xl text-[#ff4e45] flex-shrink-0" />
+              <span>YouTube Studio</span>
+            </button>
+          )}
+
+          {userData && (
+            <button
+              className="flex items-center gap-3.5 px-4 py-2.5 hover:bg-[#383838] transition-colors text-sm font-normal text-[#f1f1f1] cursor-pointer text-left w-full border-t border-[#3e3e3e] mt-1 pt-2.5"
+              onClick={handleSignOut}
+            >
+              <FiLogOut className="text-xl flex-shrink-0 text-gray-300" />
+              <span>Sign out</span>
+            </button>
+          )}
         </div>
+      </div>
       
     </div>
   );

@@ -68,18 +68,33 @@ setSavedVideos(videosRes.data || []);
     return <p className="p-6">Loading saved content...</p>;
   }
 
+  const validShorts = Array.isArray(savedShorts) ? savedShorts.filter(Boolean) : [];
+  const validVideos = Array.isArray(savedVideos) ? savedVideos.filter(Boolean) : [];
+
   return (
-    <div className="px-6 py-4 min-h-screen mt-[50px] lg:mt-[20px]">
+    <div className="min-h-screen px-2 sm:px-4 py-4 mb-16">
+      {/* Page Title */}
+      <h1 className="text-2xl font-bold text-white mb-8 pb-4 border-b border-[#272727] tracking-tight">
+        Saved Content
+      </h1>
+
+      {validShorts.length === 0 && validVideos.length === 0 && (
+        <div className="py-20 text-center">
+          <p className="text-gray-400 text-lg">No saved content found.</p>
+        </div>
+      )}
+
       {/* Shorts Section */}
-      <h2 className="text-2xl font-bold mb-6 pt-[50px] border-b border-gray-300 pb-2 flex items-center gap-2">
-        <SiYoutubeshorts className="w-7 h-7 text-orange-600" />
-        Saved Shorts
-      </h2>
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-        {savedShorts.length > 0 ? (
-          savedShorts.map((short) => (
-            <div key={short._id} className="flex-shrink-0">
+      {validShorts.length > 0 && (
+        <div className="mb-12">
+          <div className="flex items-center gap-2 mb-4">
+            <SiYoutubeshorts className="w-6 h-6 text-[#ff0000]" />
+            <h2 className="text-xl font-bold text-white tracking-tight">Saved Shorts</h2>
+          </div>
+          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none">
+            {validShorts.map((short) => (
               <ShortsCard
+                key={short._id}
                 shortUrl={short.shortUrl}
                 title={short.title}
                 channelName={short.channel?.name}
@@ -87,37 +102,32 @@ setSavedVideos(videosRes.data || []);
                 id={short._id}
                 avatar={short.channel?.avatar}
               />
-            </div>
-          ))
-        ) : (
-          <p>No saved shorts found.</p>
-        )}
-      </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Videos Section */}
-      <h2 className="text-2xl font-bold mb-6 pt-[50px] border-b border-gray-300 pb-2 flex items-center gap-2">
-        <img src={logo} className="w-7 h-7" alt="" />
-        Saved Videos
-      </h2>
-      <div className="flex flex-wrap gap-6 mb-12">
-        {savedVideos.length > 0 ? (
-          savedVideos.map((video) => (
-            <VideoCard
-              key={video._id}
-              thumbnail={video.thumbnail}
-              duration={durations[video._id] || "0:00"}
-              channelLogo={video.channel?.avatar}
-              title={video.title}
-              channelName={video.channel?.name}
-              views={`${video.views}`}
-              time={new Date(video.createdAt).toLocaleDateString()}
-              id={video._id}
-            />
-          ))
-        ) : (
-          <p>No saved videos found.</p>
-        )}
-      </div>
+      {validVideos.length > 0 && (
+        <div className="mt-8 pt-6 border-t border-[#272727]">
+          <h2 className="text-xl font-bold text-white mb-6 tracking-tight">Saved Videos</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-8">
+            {validVideos.map((video) => (
+              <VideoCard
+                key={video._id}
+                thumbnail={video.thumbnail}
+                duration={durations[video._id] || "0:00"}
+                channelLogo={video.channel?.avatar}
+                title={video.title}
+                channelName={video.channel?.name}
+                views={`${video.views}`}
+                time={video.createdAt ? new Date(video.createdAt).toLocaleDateString() : ""}
+                id={video._id}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

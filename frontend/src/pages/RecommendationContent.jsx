@@ -53,36 +53,34 @@ const RecommendationContent = () => {
   }
 
   return (
-    <div className="px-6 py-4  mb-[20px]">
-
-
+    <div className="mb-10">
       {/* 🔹 Videos Section */}
       {allVideos.length > 0 && (
-        <div>
-          
-          <div className="flex flex-wrap gap-6 mb-12">
-            {allVideos.map((video) => (
-              <VideoCard
-                key={video._id}
-                thumbnail={video.thumbnail}
-                duration={durations[video._id] || "0:00"}
-                channelLogo={video.channel?.avatar}
-                title={video.title}
-                channelName={video.channel?.name}
-                views={`${video.views}`}
-                time={new Date(video.createdAt).toLocaleDateString()}
-                id={video._id}
-              />
-            ))}
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-8 mb-12">
+          {allVideos.map((video) => (
+            <VideoCard
+              key={video._id}
+              thumbnail={video.thumbnail}
+              duration={durations[video._id] || "0:00"}
+              channelLogo={video.channel?.avatar}
+              title={video.title}
+              channelName={video.channel?.name}
+              views={`${video.views}`}
+              time={new Date(video.createdAt).toLocaleDateString()}
+              id={video._id}
+            />
+          ))}
         </div>
       )}
 
       {/* 🔹 Shorts Section */}
       {allShorts.length > 0 && (
-        <div className="mt-8">
-          <h3 className="text-xl font-bold mb-4 flex items-center gap-1"><SiYoutubeshorts className="w-6 h-6 text-red-600" />Shorts</h3>
-          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+        <div className="mt-6 pt-6 border-t border-[#272727]">
+          <div className="flex items-center gap-2 mb-4">
+            <SiYoutubeshorts className="w-6 h-6 text-[#ff0000]" />
+            <h3 className="text-xl font-bold text-white tracking-tight">Shorts</h3>
+          </div>
+          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none">
             {allShorts.map((short) => (
               <div key={short._id} className="flex-shrink-0">
                 <ShortsCard

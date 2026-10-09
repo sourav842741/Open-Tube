@@ -68,42 +68,51 @@ const LikedContentPage = () => {
     return <p className="p-6">Loading liked content...</p>;
   }
 
+  const validShorts = Array.isArray(likedShorts) ? likedShorts.filter(Boolean) : [];
+  const validVideos = Array.isArray(likedVideos) ? likedVideos.filter(Boolean) : [];
+
   return (
-    <div className="px-6 py-4 min-h-screen mt-[50px] lg:mt-[20px]">
+    <div className="min-h-screen px-2 sm:px-4 py-4 mb-16">
+      {/* Page Title */}
+      <h1 className="text-2xl font-bold text-white mb-8 pb-4 border-b border-[#272727] tracking-tight">
+        Liked Content
+      </h1>
+
+      {validShorts.length === 0 && validVideos.length === 0 && (
+        <div className="py-20 text-center">
+          <p className="text-gray-400 text-lg">You haven't liked any videos or shorts yet.</p>
+        </div>
+      )}
 
       {/* Shorts Section */}
-      {likedShorts.length > 0 && (
-        <>
-          <h2 className="text-2xl font-bold mb-6 pt-[50px] border-b border-gray-300 pb-2 flex items-center gap-2">
-            <SiYoutubeshorts className="w-7 h-7 text-red-600" />
-            Liked Shorts
-          </h2>
-          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-            {likedShorts.map((short) => (
-              <div key={short._id} className="flex-shrink-0">
-                <ShortsCard
-                  shortUrl={short.shortUrl}
-                  title={short.title}
-                  channelName={short.channel?.name}
-                  views={short.views}
-                  id={short._id}
-                  avatar={short.channel?.avatar}
-                />
-              </div>
+      {validShorts.length > 0 && (
+        <div className="mb-12">
+          <div className="flex items-center gap-2 mb-4">
+            <SiYoutubeshorts className="w-6 h-6 text-[#ff0000]" />
+            <h2 className="text-xl font-bold text-white tracking-tight">Liked Shorts</h2>
+          </div>
+          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none">
+            {validShorts.map((short) => (
+              <ShortsCard
+                key={short._id}
+                shortUrl={short.shortUrl}
+                title={short.title}
+                channelName={short.channel?.name}
+                views={short.views}
+                id={short._id}
+                avatar={short.channel?.avatar}
+              />
             ))}
           </div>
-        </>
+        </div>
       )}
 
       {/* Videos Section */}
-      {likedVideos.length > 0 && (
-        <>
-          <h2 className="text-2xl font-bold mb-6 pt-[50px] border-b border-gray-300 pb-2 flex items-center gap-2">
-            <img src={logo} className="w-7 h-7" alt="" />
-            Liked Videos
-          </h2>
-          <div className="flex flex-wrap gap-6 mb-12">
-            {likedVideos.map((video) => (
+      {validVideos.length > 0 && (
+        <div className="mt-8 pt-6 border-t border-[#272727]">
+          <h2 className="text-xl font-bold text-white mb-6 tracking-tight">Liked Videos</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-8">
+            {validVideos.map((video) => (
               <VideoCard
                 key={video._id}
                 thumbnail={video.thumbnail}
@@ -112,17 +121,12 @@ const LikedContentPage = () => {
                 title={video.title}
                 channelName={video.channel?.name}
                 views={`${video.views}`}
-                time={new Date(video.createdAt).toLocaleDateString()}
+                time={video.createdAt ? new Date(video.createdAt).toLocaleDateString() : ""}
                 id={video._id}
               />
             ))}
           </div>
-        </>
-      )}
-
-      {/* ✅ If nothing liked at all */}
-      {likedShorts.length === 0 && likedVideos.length === 0 && (
-        <p className="mt-10 text-lg">You haven't liked any videos or shorts yet.</p>
+        </div>
       )}
     </div>
   );

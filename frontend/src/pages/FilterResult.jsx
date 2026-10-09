@@ -42,18 +42,18 @@ const FilterResults = ({ filterResults }) => {
     (!filterResults?.shorts || filterResults.shorts.length === 0);
 
   return (
-    <div className="px-6 py-4 bg-[#00000051] border-1 border-gray-800 mb-[20px]">
-      <h1 className="text-2xl font-bold mb-4">Filtered Content :</h1>
+    <div className="mb-10">
+      <h1 className="text-xl font-bold text-white mb-6">Filtered Content</h1>
 
       {isEmpty ? (
-        <p className="text-gray-400 text-lg">No results found.</p>
+        <p className="text-gray-400 text-base py-8">No results found.</p>
       ) : (
         <>
           {/* Videos Section */}
           {filterResults.videos?.length > 0 && (
-            <div>
-              <h3 className="text-xl font-bold mb-4">Videos</h3>
-              <div className="flex flex-wrap gap-6 mb-12">
+            <div className="mb-10">
+              <h3 className="text-lg font-bold text-white mb-4">Videos</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-8">
                 {filterResults.videos.map((video) => (
                   <VideoCard
                     key={video._id}
@@ -73,20 +73,19 @@ const FilterResults = ({ filterResults }) => {
 
           {/* Shorts Section */}
           {filterResults.shorts?.length > 0 && (
-            <div className="mt-8">
-              <h3 className="text-xl font-bold mb-4">Shorts</h3>
-              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+            <div className="mt-8 pt-6 border-t border-[#272727] mb-10">
+              <h3 className="text-lg font-bold text-white mb-4">Shorts</h3>
+              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none">
                 {filterResults.shorts.map((short) => (
-                  <div key={short._id} className="flex-shrink-0">
-                    <ShortsCard
-                      shortUrl={short.shortUrl}
-                      title={short.title}
-                      channelName={short.channel?.name}
-                      views={short.views}
-                      id={short._id}
-                      avatar={short.channel?.avatar}
-                    />
-                  </div>
+                  <ShortsCard
+                    key={short._id}
+                    shortUrl={short.shortUrl}
+                    title={short.title}
+                    channelName={short.channel?.name}
+                    views={short.views}
+                    id={short._id}
+                    avatar={short.channel?.avatar}
+                  />
                 ))}
               </div>
             </div>

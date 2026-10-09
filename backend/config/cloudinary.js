@@ -15,12 +15,17 @@ try {
         return null
     }
     const uploadResult = await cloudinary.uploader.upload(filePath,{resource_type:'auto'})
-    fs.unlinkSync(filePath)
+    if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath)
+    }
     return uploadResult.secure_url
 
 } catch (error) {
-    fs.unlinkSync(filePath)
+    if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath)
+    }
     console.log(error)
+    return null
 }
 }
 

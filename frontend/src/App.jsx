@@ -41,7 +41,7 @@ import ManagePlaylist from './pages/ManagePlaylist'
 import UseGetRecommendation from './customHooks/UseGetRecommendation'
 import RevenuePage from './component/RevenuePage'
 
-export const serverUrl = "https://open-tube.onrender.com"
+export const serverUrl = import.meta.env.VITE_SERVER_URL || (import.meta.env.DEV ? "http://localhost:8000" : "https://open-tube.onrender.com");
 
 const ProtectedRoute = ({ userData, children }) => {
   if (!userData) {

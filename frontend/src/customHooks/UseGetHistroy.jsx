@@ -16,9 +16,9 @@ const UseGetHistory = () => {
 
         const history = result.data || [];
 
-        // ✅ Split videos & shorts
-        const videos = history.filter(item => item.contentType === "Video");
-        const shorts = history.filter(item => item.contentType === "Short");
+        // ✅ Split videos & shorts (ensuring contentId is valid)
+        const videos = history.filter(item => item.contentType === "Video" && item.contentId);
+        const shorts = history.filter(item => item.contentType === "Short" && item.contentId);
 
         // Redux dispatch
         dispatch(setVideoHistory(videos));

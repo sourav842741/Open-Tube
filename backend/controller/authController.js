@@ -88,28 +88,17 @@ export const googleAuth = async (req, res) => {
   try {
     const { username, email, photoUrl } = req.body;
 
-    let finalPhotoUrl = photoUrl;
-
-    // Google ka image Cloudinary me upload karo (sirf jab image aaye)
-    if (photoUrl) {
-      try {
-        finalPhotoUrl = await uploadOnCloudinary(photoUrl);
-      } catch (err) {
-        console.log("Cloudinary upload failed, using original URL");
-      }
-    }
-
     let user = await User.findOne({ email });
 
     if (!user) {
       user = await User.create({
         username,
         email,
-        photoUrl: finalPhotoUrl
+        photoUrl: photoUrl || ""
       });
     } else {
-      if (!user.photoUrl && finalPhotoUrl) {
-        user.photoUrl = finalPhotoUrl;
+      if (!user.photoUrl && photoUrl) {
+        user.photoUrl = photoUrl;
         await user.save();
       }
     }
